@@ -48,8 +48,8 @@ czarne <- c(35.145,
             41.466,
             41.567,
             42.057,
-            43.27,
             42.675,
+            43.27,
             44.17
 )
 
@@ -82,14 +82,14 @@ dominant <- function(x) {
         is.integer0 <- function(x) {
             is.integer(x) && length(x) == 0L
         }
-        #jezeli n jest ju¿ w pierwszej kolumnie wystapienia
+        #jezeli n jest juÂ¿ w pierwszej kolumnie wystapienia
         if(!is.integer0(y)){
-            #zwiêkszksz liczbê wyst¹pieñ o jeden
+            #zwiÃªkszksz liczbÃª wystÂ¹pieÃ± o jeden
             wystapienia[y, 2] <- wystapienia[y, 2] + 1
         }
         #jezeli n jeszcze nie ma
         else{
-            #ilosc wyst¹pieñ n - 1
+            #ilosc wystÂ¹pieÃ± n - 1
             wystapienia <- rbind(wystapienia, c(n, 1))
         }
     }
@@ -107,7 +107,7 @@ distance <- function(x) {
     sorted <- sort(x)
     return (sorted[length(sorted)] - sorted[1])
 }
-#rozstep miêddzykwartylowy
+#rozstep miÃªddzykwartylowy
 distanceBtwQuantile <- function(x) {
     q3 <- quantile(x, 0.75)
     q1 <- quantile(x, 0.25)
@@ -470,7 +470,7 @@ estimationPrecision <- function(ue, le, av){
   return(relativePrecision)
 }
 
-# Przedzial‚ ufnosci dla zawartosci witaminy C w czerwonej porzeczce
+# PrzedzialÂ‚ ufnosci dla zawartosci witaminy C w czerwonej porzeczce
 lowerEndpointRed <- trustIntervalLowerEndpoint(average(czerwone), TStudentCoefficient(0.98, 25), standardDeviation(czerwone), 25)
 upperEndpointRed <- trustIntervalUpperEndpoint(average(czerwone), TStudentCoefficient(0.98, 25), standardDeviation(czerwone), 25)
 
@@ -503,8 +503,8 @@ chiKwadrat1 <- chiSqCoef(alfa / 2, amountCzarne)
 chiKwadrat2 <- chiSqCoef(1 - (alfa / 2), amountCzarne)
 
 #Przedzial ufnosci dla zawartosci wit. C w Czarnej porzeczce
-upperValBoundary <- valBoundary(amountCzarne, variance(czarne), chiKwadrat1) #obliczana dla ufnoï¿½ci 0.01
-lowerValBoundary <- valBoundary(amountCzarne, variance(czarne), chiKwadrat2) #obliczana dla ufnoï¿½ci 0.99
+upperValBoundary <- valBoundary(amountCzarne, variance(czarne), chiKwadrat1) #obliczana dla ufnoÃ¯Â¿Â½ci 0.01
+lowerValBoundary <- valBoundary(amountCzarne, variance(czarne), chiKwadrat2) #obliczana dla ufnoÃ¯Â¿Â½ci 0.99
 
 #Precyzja oszacowania dla zawartosci wit. C w Czarnej porzeczce
 precyzjaCzarna <- relValPrecision(lowerValBoundary, upperValBoundary, variance(czarne))
